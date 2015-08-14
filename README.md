@@ -7,6 +7,10 @@ millions or more. Due to it only rendering a small slice of the list into the
 DOM at any time based on the scroll position, it removes most of the speed
 issues with web browsers and rendering very large amounts of DOM nodes at once.
 
+## Demo
+
+[jwarning.github.io/react-scrollable-list](http://jwarning.github.io/react-scrollable-list)
+
 The component is generic and renders a simple component comprised of a div
 wrapper and div containers for each of the elements currently rendered.
 
@@ -29,9 +33,13 @@ The component takes up to three props:
 - maxItemsToRender: an optional number which tells the component how many
 components before and after the item scrolled to it should pre-render
 
-## Demo
-
-[jwarning.github.io/react-scrollable-list](http://jwarning.github.io/react-scrollable-list)
+```
+<ReactScrollableList
+  listItems=[...]
+  heightOfItem={30}
+  maxItemsToRender={50}
+/>
+```
 
 ## Notes
 

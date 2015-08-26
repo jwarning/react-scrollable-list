@@ -1,6 +1,6 @@
 {
   "name": "react-scrollable-list",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A scrollable, high-performance list component for React",
   "main": "index.js",
   "author": "Jonathan Warning",

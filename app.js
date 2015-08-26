@@ -2,7 +2,7 @@ var React = require('react');
 var ReactScrollableList = require('./dist/react-scrollable-list.js');
 
 var listItems = [];
-for (var i = 0; i < 1000000; i++) {
+for (var i = 0; i < 10000; i++) {
   listItems.push({ id: i, content: i });
 }
 

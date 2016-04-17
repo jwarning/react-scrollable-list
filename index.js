@@ -1,31 +1,33 @@
 import React from 'react';
 
 export default React.createClass({
-  getDefaultProps () {
+  getDefaultProps() {
     return {
       listItems: [],
       heightOfItem: 30,
       maxItemsToRender: 50
     };
   },
-  getInitialState () {
+  getInitialState() {
     return {
       scrollPosition: 0
     };
   },
-  componentDidMount () {
-    React.findDOMNode(this.refs.list).addEventListener('scroll', this.updateScrollPosition);
+  componentDidMount() {
+    this.refs.list.addEventListener('scroll', this.updateScrollPosition);
   },
-  componentWillUnmount () {
-    React.findDOMNode(this.refs.list).removeEventListener('scroll', this.updateScrollPosition);
+  componentWillUnmount() {
+    this.refs.list.removeEventListener('scroll', this.updateScrollPosition);
   },
-  updateScrollPosition () {
-    var newScrollPosition = React.findDOMNode(this.refs.list).scrollTop / this.props.heightOfItem;
+  updateScrollPosition() {
+    var newScrollPosition = this.refs.list.scrollTop / this.props.heightOfItem;
     var difference = Math.abs(this.state.scrollPosition - newScrollPosition);
 
-    if (difference >= this.props.maxItemsToRender / 5) this.setState({ scrollPosition: newScrollPosition });
+    if (difference >= this.props.maxItemsToRender / 5) {
+      this.setState({ scrollPosition: newScrollPosition });
+    }
   },
-  render () {
+  render() {
     var startPosition = this.state.scrollPosition - this.props.maxItemsToRender > 0 ?
       this.state.scrollPosition - this.props.maxItemsToRender : 0;
     var endPosition = this.state.scrollPosition + this.props.maxItemsToRender >= this.props.listItems.length ?

@@ -43,9 +43,8 @@ components before and after the item scrolled to it should pre-render
 
 ## Notes
 
-To build a CommonJS version of this file simply run `gulp build`.
-If you want a different output type you can simply set the option on the Babel
-step in the gulpfile. A build is already included in the dist folder.
+To build a CommonJS version of this file simply run `npm run build`.
+A build is already included in the dist folder.
 
 ## License
 

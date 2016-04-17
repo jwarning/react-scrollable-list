@@ -1,34 +1,6 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _index = require('./dist/index');
-
-var _index2 = _interopRequireDefault(_index);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var listItems = [];
-for (var i = 0; i < 10000; i++) {
-  listItems.push({ id: i, content: i });
-}
-
-_reactDom2.default.render(_react2.default.createElement(_index2.default, {
-  listItems: listItems,
-  heightOfItem: 30,
-  maxItemsToRender: 20
-}), document.getElementById('app'));
-
-},{"./dist/index":2,"react":167,"react-dom":31}],2:[function(require,module,exports){
-'use strict';
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -43,6 +15,12 @@ function _interopRequireDefault(obj) {
 
 exports.default = _react2.default.createClass({
   displayName: '.',
+
+  propTypes: {
+    listItems: _react.PropTypes.array.isRequired,
+    heightOfItem: _react.PropTypes.number,
+    maxItemsToRender: _react.PropTypes.number
+  },
   getDefaultProps: function getDefaultProps() {
     return {
       listItems: [],
@@ -71,17 +49,49 @@ exports.default = _react2.default.createClass({
   },
   render: function render() {
     var startPosition = this.state.scrollPosition - this.props.maxItemsToRender > 0 ? this.state.scrollPosition - this.props.maxItemsToRender : 0;
+
     var endPosition = this.state.scrollPosition + this.props.maxItemsToRender >= this.props.listItems.length ? this.props.listItems.length : this.state.scrollPosition + this.props.maxItemsToRender;
 
-    return _react2.default.createElement('div', { className: 'react-scrollable-list', ref: 'list' }, _react2.default.createElement('div', { key: 'list-spacer-top', style: { height: startPosition * this.props.heightOfItem } }), this.props.listItems.slice(startPosition, endPosition).map(function (item) {
-      return _react2.default.createElement('div', { className: 'react-scrollable-list-item', key: 'list-item-' + item.id }, item.content);
+    return _react2.default.createElement('div', { className: 'react-scrollable-list', ref: 'list' }, _react2.default.createElement('div', { key: 'list-spacer-top', style: {
+        height: startPosition * this.props.heightOfItem
+      } }), this.props.listItems.slice(startPosition, endPosition).map(function (item) {
+      return _react2.default.createElement('div', {
+        className: 'react-scrollable-list-item', key: 'list-item-' + item.id }, item.content);
     }), _react2.default.createElement('div', { key: 'list-spacer-bottom', style: {
         height: this.props.listItems.length * this.props.heightOfItem - endPosition * this.props.heightOfItem
       } }));
   }
 });
 
-},{"react":167}],3:[function(require,module,exports){
+},{"react":167}],2:[function(require,module,exports){
+'use strict';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _index = require('../dist/index');
+
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var listItems = [];
+for (var i = 0; i < 10000; i++) {
+  listItems.push({ id: i, content: i });
+}
+
+_reactDom2.default.render(_react2.default.createElement(_index2.default, {
+  listItems: listItems,
+  heightOfItem: 30,
+  maxItemsToRender: 20
+}), document.getElementById('app'));
+
+},{"../dist/index":1,"react":167,"react-dom":31}],3:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -19444,4 +19454,4 @@ module.exports = validateDOMNesting;
 
 module.exports = require('./lib/React');
 
-},{"./lib/React":55}]},{},[1]);
+},{"./lib/React":55}]},{},[2]);

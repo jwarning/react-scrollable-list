@@ -9,7 +9,7 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _index = require('./index');
+var _index = require('./dist/index');
 
 var _index2 = _interopRequireDefault(_index);
 
@@ -26,7 +26,7 @@ _reactDom2.default.render(_react2.default.createElement(_index2.default, {
   maxItemsToRender: 20
 }), document.getElementById('app'));
 
-},{"./index":2,"react":167,"react-dom":31}],2:[function(require,module,exports){
+},{"./dist/index":2,"react":167,"react-dom":31}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -37,10 +37,12 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
 
 exports.default = _react2.default.createClass({
-  displayName: 'react-scrollable-list',
+  displayName: '.',
   getDefaultProps: function getDefaultProps() {
     return {
       listItems: [],
@@ -71,21 +73,11 @@ exports.default = _react2.default.createClass({
     var startPosition = this.state.scrollPosition - this.props.maxItemsToRender > 0 ? this.state.scrollPosition - this.props.maxItemsToRender : 0;
     var endPosition = this.state.scrollPosition + this.props.maxItemsToRender >= this.props.listItems.length ? this.props.listItems.length : this.state.scrollPosition + this.props.maxItemsToRender;
 
-    return _react2.default.createElement(
-      'div',
-      { className: 'react-scrollable-list', ref: 'list' },
-      _react2.default.createElement('div', { key: 'list-spacer-top', style: { height: startPosition * this.props.heightOfItem } }),
-      this.props.listItems.slice(startPosition, endPosition).map(function (item) {
-        return _react2.default.createElement(
-          'div',
-          { className: 'react-scrollable-list-item', key: 'list-item-' + item.id },
-          item.content
-        );
-      }),
-      _react2.default.createElement('div', { key: 'list-spacer-bottom', style: {
-          height: this.props.listItems.length * this.props.heightOfItem - endPosition * this.props.heightOfItem
-        } })
-    );
+    return _react2.default.createElement('div', { className: 'react-scrollable-list', ref: 'list' }, _react2.default.createElement('div', { key: 'list-spacer-top', style: { height: startPosition * this.props.heightOfItem } }), this.props.listItems.slice(startPosition, endPosition).map(function (item) {
+      return _react2.default.createElement('div', { className: 'react-scrollable-list-item', key: 'list-item-' + item.id }, item.content);
+    }), _react2.default.createElement('div', { key: 'list-spacer-bottom', style: {
+        height: this.props.listItems.length * this.props.heightOfItem - endPosition * this.props.heightOfItem
+      } }));
   }
 });
 

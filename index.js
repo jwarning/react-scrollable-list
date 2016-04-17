@@ -20,18 +20,18 @@ export default React.createClass({
     this.refs.list.removeEventListener('scroll', this.updateScrollPosition);
   },
   updateScrollPosition() {
-    var newScrollPosition = this.refs.list.scrollTop / this.props.heightOfItem;
-    var difference = Math.abs(this.state.scrollPosition - newScrollPosition);
+    let newScrollPosition = this.refs.list.scrollTop / this.props.heightOfItem;
+    let difference = Math.abs(this.state.scrollPosition - newScrollPosition);
 
     if (difference >= this.props.maxItemsToRender / 5) {
       this.setState({ scrollPosition: newScrollPosition });
     }
   },
   render() {
-    var startPosition = this.state.scrollPosition - this.props.maxItemsToRender > 0 ?
-      this.state.scrollPosition - this.props.maxItemsToRender : 0;
-    var endPosition = this.state.scrollPosition + this.props.maxItemsToRender >= this.props.listItems.length ?
-      this.props.listItems.length : this.state.scrollPosition + this.props.maxItemsToRender;
+    let startPosition = this.state.scrollPosition - this.props.maxItemsToRender > 0
+      ? this.state.scrollPosition - this.props.maxItemsToRender : 0;
+    let endPosition = this.state.scrollPosition + this.props.maxItemsToRender >= this.props.listItems.length
+      ? this.props.listItems.length : this.state.scrollPosition + this.props.maxItemsToRender;
 
     return <div className='react-scrollable-list' ref='list'>
       <div key='list-spacer-top' style={{ height: startPosition * this.props.heightOfItem }}></div>

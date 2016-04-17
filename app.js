@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactScrollableList from './index';
+import ReactScrollableList from './dist/index';
 
-var listItems = [];
+let listItems = [];
 for (var i = 0; i < 10000; i++) {
   listItems.push({ id: i, content: i });
 }

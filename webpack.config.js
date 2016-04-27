@@ -6,8 +6,8 @@ var config = {
     './example/app'
   ],
   output: {
-    path: './dist',
-    filename: './example/bundle.js'
+    path: './example',
+    filename: 'bundle.js'
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin({

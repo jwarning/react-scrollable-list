@@ -18,7 +18,7 @@ To style the elements you can simply refer to the `.react-scrollable-list` and
 the `.react-scrollable-list-item` classes. The list items need to be passed in
 via props in the following format:
 
-```
+```js
 {
   id: 'a unique identifier',
   content: 'the content to display inside the div'
@@ -33,7 +33,7 @@ The component takes up to three props:
 - maxItemsToRender: an optional number which tells the component how many
 components before and after the item scrolled to it should pre-render
 
-```
+```js
 <ReactScrollableList
   listItems=[...]
   heightOfItem={30}

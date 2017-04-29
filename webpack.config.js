@@ -2,11 +2,9 @@ var path = require('path')
 var webpack = require('webpack')
 
 var config = {
-  entry: [
-    './example/app'
-  ],
+  entry: ['./example/app'],
   output: {
-    path: './example',
+    path: path.join(__dirname, 'example'),
     filename: 'bundle.js'
   },
   plugins: [
@@ -19,16 +17,16 @@ var config = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
+        NODE_ENV: JSON.stringify('production')
       }
     })
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel',
-        exclude: '/node_modules/',
+        loader: 'babel-loader',
+        exclude: /node_modules/,
         include: __dirname
       }
     ]

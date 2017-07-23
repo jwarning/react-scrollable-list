@@ -1,5 +1,7 @@
 # React Scrollable List
 
+[![npm version](https://badge.fury.io/js/react-scrollable-list.svg)](https://badge.fury.io/js/react-scrollable-list)
+
 React Scrollable List is a scrollable, high-performance list component for
 rendering large lists of items with React. It's performance really shines when
 dealing with lists in excess of a thousand items, and scales well into the
@@ -39,6 +41,7 @@ components before and after the item scrolled to it should pre-render
   listItems=[...]
   heightOfItem={30}
   maxItemsToRender={50}
+  style={{ color: '#333' }}
 />
 ```
 

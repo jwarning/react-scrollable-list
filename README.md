@@ -32,9 +32,8 @@ The content can alternatively also be another react component.
 The component takes up to four props:
 - listItems: an array of items in the format specified above
 - heightOfItem: the CSS height of each item (needs to be the same for each item)
-- maxItemsToRender: an optional number which tells the component how many
+- maxItemsToRender: an optional number which tells the component how many components before and after the item scrolled to it should pre-render
 - style: an optional style object to add inline styling through JS
-components before and after the item scrolled to it should pre-render
 
 ```js
 <ReactScrollableList

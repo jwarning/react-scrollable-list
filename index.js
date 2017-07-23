@@ -5,7 +5,8 @@ export default class ScrollableList extends Component {
   static propTypes = {
     listItems: PropTypes.array.isRequired,
     heightOfItem: PropTypes.number,
-    maxItemsToRender: PropTypes.number
+    maxItemsToRender: PropTypes.number,
+    style: PropTypes.object
   }
   static defaultProps = {
     listItems: [],
@@ -46,7 +47,7 @@ export default class ScrollableList extends Component {
       : this.state.scrollPosition + this.props.maxItemsToRender
 
     return (
-      <div className="react-scrollable-list" ref="list">
+      <div className="react-scrollable-list" ref="list" style={this.props.style}>
         <div
           key="list-spacer-top"
           style={{

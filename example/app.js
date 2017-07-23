@@ -12,6 +12,7 @@ ReactDOM.render(
     listItems={listItems}
     heightOfItem={30}
     maxItemsToRender={20}
+    style={{ color: '#333' }}
   />,
   document.getElementById('app')
 )

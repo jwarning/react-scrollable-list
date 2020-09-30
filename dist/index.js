@@ -31,6 +31,11 @@ var ScrollableList = function (_Component) {
     var _this = _possibleConstructorReturn(this, (ScrollableList.__proto__ || Object.getPrototypeOf(ScrollableList)).call(this, props));
 
     _this.state = { scrollPosition: 0 };
+    _this.list = null;
+
+    _this.setListRef = function (element) {
+      _this.list = element;
+    };
 
     _this.updateScrollPosition = _this.updateScrollPosition.bind(_this);
     return _this;
@@ -39,17 +44,17 @@ var ScrollableList = function (_Component) {
   _createClass(ScrollableList, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.refs.list.addEventListener('scroll', this.updateScrollPosition);
+      this.list.addEventListener('scroll', this.updateScrollPosition);
     }
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
-      this.refs.list.removeEventListener('scroll', this.updateScrollPosition);
+      this.list.removeEventListener('scroll', this.updateScrollPosition);
     }
   }, {
     key: 'updateScrollPosition',
     value: function updateScrollPosition() {
-      var newScrollPosition = this.refs.list.scrollTop / this.props.heightOfItem;
+      var newScrollPosition = this.list.scrollTop / this.props.heightOfItem;
       var difference = Math.abs(this.state.scrollPosition - newScrollPosition);
 
       if (difference >= this.props.maxItemsToRender / 5) {
@@ -65,7 +70,7 @@ var ScrollableList = function (_Component) {
 
       return _react2.default.createElement(
         'div',
-        { className: 'react-scrollable-list', ref: 'list', style: this.props.style },
+        { className: 'react-scrollable-list', ref: this.setListRef, style: this.props.style },
         _react2.default.createElement('div', {
           key: 'list-spacer-top',
           style: {

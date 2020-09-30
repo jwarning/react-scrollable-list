@@ -16,17 +16,22 @@ export default class ScrollableList extends Component {
   constructor(props) {
     super(props)
     this.state = { scrollPosition: 0 }
+    this.list = null
+
+    this.setListRef = element => {
+      this.list = element
+    }
 
     this.updateScrollPosition = this.updateScrollPosition.bind(this)
   }
   componentDidMount() {
-    this.refs.list.addEventListener('scroll', this.updateScrollPosition)
+    this.list.addEventListener('scroll', this.updateScrollPosition)
   }
   componentWillUnmount() {
-    this.refs.list.removeEventListener('scroll', this.updateScrollPosition)
+    this.list.removeEventListener('scroll', this.updateScrollPosition)
   }
   updateScrollPosition() {
-    const newScrollPosition = this.refs.list.scrollTop / this.props.heightOfItem
+    const newScrollPosition = this.list.scrollTop / this.props.heightOfItem
     const difference = Math.abs(this.state.scrollPosition - newScrollPosition)
 
     if (difference >= this.props.maxItemsToRender / 5) {
@@ -47,7 +52,7 @@ export default class ScrollableList extends Component {
       : this.state.scrollPosition + this.props.maxItemsToRender
 
     return (
-      <div className="react-scrollable-list" ref="list" style={this.props.style}>
+      <div className="react-scrollable-list" ref={this.setListRef} style={this.props.style}>
         <div
           key="list-spacer-top"
           style={{
